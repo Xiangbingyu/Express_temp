@@ -12,6 +12,20 @@ app.get('/api/hello', (req, res) => {
   res.json({ code: 200, msg: 'Express后端服务启动成功！', data: null });
 });
 
+app.get('/api/test', (req, res) => {
+  res.json({
+    code: 200,
+    msg: '前后端连通性测试成功',
+    data: {
+      timestamp: new Date().toISOString(),
+      server: 'Express',
+      status: 'running',
+      method: req.method,
+      path: req.path
+    }
+  });
+});
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`🚀 Express服务运行在：http://localhost:${PORT}`);
